@@ -3,7 +3,6 @@
 ## Description
 
 - App that you can access all of your favorite sports teams.
-- Live scores and updates
 
 ## Resources
 
@@ -28,4 +27,10 @@
 
 ![](https://i.imgur.com/gyQ1jOd.png)
 
+## CHD
+
+![](https://i.imgur.com/Gt8rkgk.png)
+
 # Credits
+
+- API https://rapidapi.com/theapiguy/api/thesportsdb/
