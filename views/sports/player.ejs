@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= player.name %></title>
+</head>
+<body>
+    <h1><%= player.name %></h1>
+    <p>Team: <%= player.team %></p>
+    <p>Position: <%= player.position %></p>
+    <h2>Stats:</h2>
+    <pre><%= JSON.stringify(player.stats, null, 2) %></pre>
+    <a href="/api/players">Back to Players List</a>
+</body>
+</html>

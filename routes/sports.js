@@ -1,13 +1,13 @@
 const express = require('express');
 const router = express.Router();
-const playersController = require('../controllers/sports');
+const sportsCtrl = require('../controllers/sports');
 
 
-router.post('/', playersController.createPlayer);
-router.get('/', playersController.getPlayers);
-router.get('/:id', playersController.getPlayerById);
-router.put('/:id', playersController.updatePlayer);
-router.delete('/:id', playersController.deletePlayer);
-router.get('/fetch/:playerName', playersController.fetchPlayerStats);
+router.post('/', sportsCtrl.createPlayer);
+router.get('/', sportsCtrl.getPlayers);
+router.get('/:id', sportsCtrl.getPlayerById);
+router.put('/:id', sportsCtrl.updatePlayer);
+router.delete('/:id', sportsCtrl.deletePlayer);
+router.get('/fetch/:playerName', sportsCtrl.fetchPlayerStats);
 
 module.exports = router;

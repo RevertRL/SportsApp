@@ -14,7 +14,7 @@ const createPlayer = async (req, res) => {
 const getPlayers = async (req, res) => {
     try {
         const players = await Player.find();
-        res.status(200).send(players);
+        res.render('player', { player });
     } catch (err) {
         res.status(500).send(err);
     }
@@ -24,7 +24,7 @@ const getPlayerById = async (req, res) => {
     try {
         const player = await Player.findById(req.params.id);
         if (!player) return res.status(404).send();
-        res.status(200).send(player);
+        res.render('player', { player });
     } catch (err) {
         res.status(500).send(err);
     }
@@ -72,6 +72,21 @@ const fetchPlayerStats = async (req, res) => {
 };
 
 
+const fetchTeams = async (req, res) => {
+    try {
+        const response = await axios.get('https://www.thesportsdb.com/api/v1/json/1/search_all_teams.php?l=English%20Premier%20League', {
+            headers: {
+                'X-RapidAPI-Key': process.env.RAPIDAPI_KEY,
+                'X-RapidAPI-Host': 'thesportsdb.p.rapidapi.com'
+            }
+        });
+        const teams = response.data.teams;
+        res.render('sports/index', { teams });
+    } catch (error) {
+        console.error(error);
+        res.status(500).send('Error fetching team data');
+    }
+};
 
 module.exports = {
     createPlayer,
@@ -80,4 +95,5 @@ module.exports = {
     updatePlayer,
     deletePlayer,
     fetchPlayerStats,
+    fetchTeams,
 };
