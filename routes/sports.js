@@ -1,9 +1,13 @@
-var express = require('express');
-var router = express.Router();
+const express = require('express');
+const router = express.Router();
+const playersController = require('../controllers/sports');
 
-/* GET users listing. */
-router.get('/', function(req, res, next) {
-  res.send('respond with a resource');
-});
+
+router.post('/', playersController.createPlayer);
+router.get('/', playersController.getPlayers);
+router.get('/:id', playersController.getPlayerById);
+router.put('/:id', playersController.updatePlayer);
+router.delete('/:id', playersController.deletePlayer);
+router.get('/fetch/:playerName', playersController.fetchPlayerStats);
 
 module.exports = router;
