@@ -11,13 +11,31 @@ const createPlayer = async (req, res) => {
     }
 };
 
+const getPlayers = async (req, res) => {
+    try {
+        const players = await Player.find();
+        res.status(200).send(players);
+    } catch (err) {
+        res.status(500).send(err);
+    }
+};
 
-
-
+const getPlayerById = async (req, res) => {
+    try {
+        const player = await Player.findById(req.params.id);
+        if (!player) return res.status(404).send();
+        res.status(200).send(player);
+    } catch (err) {
+        res.status(500).send(err);
+    }
+};
 
 
 
 
 module.exports = {
-    createPlayer
+    createPlayer,
+    getPlayers,
+    getPlayerById,
+
 };
